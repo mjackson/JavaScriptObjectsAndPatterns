@@ -1,0 +1,14 @@
+{
+  "name": "AdvancedJavaScript",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {},
+  "repository": "",
+  "author": "Michael Jackson",
+  "license": "BSD",
+  "dependencies": {
+    "mustache": "0.7.0",
+    "strata": "0.17.0"
+  }
+}
