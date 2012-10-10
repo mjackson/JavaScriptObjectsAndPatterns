@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Advanced JavaScript</title>
+    <title>JavaScript Objects and Patterns</title>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <link rel="stylesheet" href="lib/reset.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="lib/sh_main.js"></script>
     <script type="text/javascript" src="lib/sh_javascript.js"></script>
-    <script type="text/javascript" src="lib/jquery.js"></script>
-    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="lib/sh_style.css">
-    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+    $(function () {
+      sh_highlightDocument();
+
+      var $example = $('.example');
+      var $button = $('<button>').addClass('run').text('Run this example').insertAfter($example);
+      var $messages;
+
+      log = function (message, className) {
+        className = className || 'log';
+        $messages.append('<li class="' + className + '">' + message + '</li>');
+      };
+
+      assert = function (condition, message) {
+        log(message, condition ? 'pass' : 'fail');
+      };
+
+      $button.click(function (e) {
+        var $output = $('<h2>Output:</h2>').replaceAll($button);
+        $messages = $('<ul>').addClass('messages').insertAfter($output);
+        eval($example.text());
+      });
+
+      var nextHref = {{{next}}};
+
+      if (nextHref) {
+        var $nextButton = $('<button>').click(function () {
+          window.location.href = nextHref;
+        }).insertAfter($example);
+      }
+    });
+    </script>
   </head>
   <body>
     <div class="wrapper">
-      <pre class="example">{{code}}</pre>
+      <pre class="example sh_javascript">{{code}}</pre>
     </div>
   </body>
 </html>
